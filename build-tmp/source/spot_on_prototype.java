@@ -33,12 +33,36 @@ public void draw(){
 	ellipse(width/2,height/2,250,250);
 	ellipse(width/2,height/2,75,75);
 
+	mouseCheck();
+
 	for (int i=0; i < tokens.size(); i++){
 		Token currentToken = tokens.get(i);
 		currentToken.display();
 	}
 }
 
+public void mouseCheck() {
+	float diameter;
+	float tokenX;
+	float tokenY;
+
+	for (int i=0; i < tokens.size(); i++){
+		Token currentToken = tokens.get(i);
+
+		tokenX = currentToken.x;
+		tokenY = currentToken.y;
+		diameter = currentToken.d;
+
+		if( mouseX >= tokenX-(diameter/2) && mouseX <= tokenX+(diameter/2)
+			&& mouseY >= tokenY-(diameter/2) && mouseY <= tokenY+(diameter/2) ){
+
+			currentToken.fillColor = color(0,255,0);
+			println("mouseover!: " + i );
+		}
+	}
+}
+
+// Just playin\u2019
 public void keyPressed() {
 	float diameter;
 
@@ -56,16 +80,15 @@ public void mousePressed() {
 class Token {
   int x;
   int y;
-  int w;
-  int h;
+  int d;
 
   int fillColor;
   
   Token(int tempX, int tempY, int tempH, int tempW){
     x = tempX;
     y = tempY;
-    h = tempH;
-    w = tempW;
+    d = tempH;
+    d = tempW;
 
     fillColor = color(220, 15, 15);
     
@@ -73,7 +96,7 @@ class Token {
   
   public void display() {
     fill(fillColor);
-    ellipse(x, y, w, h);
+    ellipse(x, y, d, d);
   }
 };
   public void settings() { 	size(800, 800); }

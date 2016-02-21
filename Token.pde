@@ -1,16 +1,15 @@
 class Token {
   int x;
   int y;
-  int w;
-  int h;
+  int d;
 
   color fillColor;
   
   Token(int tempX, int tempY, int tempH, int tempW){
     x = tempX;
     y = tempY;
-    h = tempH;
-    w = tempW;
+    d = tempH;
+    d = tempW;
 
     fillColor = color(220, 15, 15);
     
@@ -18,6 +17,6 @@ class Token {
   
   void display() {
     fill(fillColor);
-    ellipse(x, y, w, h);
+    ellipse(x, y, d, d);
   }
 };
