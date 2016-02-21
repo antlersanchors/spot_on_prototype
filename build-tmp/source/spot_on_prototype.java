@@ -19,30 +19,39 @@ Token token;
 ArrayList<Token> tokens = new ArrayList<Token>();
 
 public void setup(){
- 
- 
- tokens.add( new Token(150, 150, 150, 150));
- // token = new Token(150, 150, 150, 150); 
+	
+
+	tokens.add( new Token(150, 150, 150, 150));
 }
 
 public void draw(){
- 
- color(125,125,125);
- 
- ellipse(width/2,height/2,650,650);
- ellipse(width/2,height/2,450,450);
- ellipse(width/2,height/2,250,250);
- ellipse(width/2,height/2,75,75);
 
- for (int i=0; i < tokens.size(); i++){
- 	Token currentToken = tokens.get(i);
-	currentToken.display();
-  }
+	color(125,125,125);
+
+	ellipse(width/2,height/2,650,650);
+	ellipse(width/2,height/2,450,450);
+	ellipse(width/2,height/2,250,250);
+	ellipse(width/2,height/2,75,75);
+
+	for (int i=0; i < tokens.size(); i++){
+		Token currentToken = tokens.get(i);
+		currentToken.display();
+	}
+}
+
+public void keyPressed() {
+	float diameter;
+
+	for (int i=0; i < tokens.size(); i++){
+		Token currentToken = tokens.get(i);
+		
+		currentToken.fillColor = color(0,255,0);
+		println("keypressed! ");
+	}
 }
 
 public void mousePressed() {
-  // token = new Token(int(random(0,width)),int(random(0, height)),150,150);
-  tokens.add(new Token(PApplet.parseInt(random(0,width)),PApplet.parseInt(random(0, height)),150,150));
+	tokens.add(new Token(PApplet.parseInt(random(0,width)),PApplet.parseInt(random(0, height)),150,150));
 }
 class Token {
   int x;
@@ -50,22 +59,24 @@ class Token {
   int w;
   int h;
 
-  int fillColor = color (220,15,15);
+  int fillColor;
   
   Token(int tempX, int tempY, int tempH, int tempW){
     x = tempX;
     y = tempY;
     h = tempH;
     w = tempW;
+
+    fillColor = color(220, 15, 15);
     
-    fill(fillColor);
   }
   
   public void display() {
+    fill(fillColor);
     ellipse(x, y, w, h);
   }
 };
-  public void settings() {  size(800, 800); }
+  public void settings() { 	size(800, 800); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "spot_on_prototype" };
     if (passedArgs != null) {

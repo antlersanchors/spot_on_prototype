@@ -23,6 +23,17 @@ void draw(){
 	}
 }
 
+void keyPressed() {
+	float diameter;
+
+	for (int i=0; i < tokens.size(); i++){
+		Token currentToken = tokens.get(i);
+		
+		currentToken.fillColor = color(0,255,0);
+		println("keypressed! ");
+	}
+}
+
 void mousePressed() {
-  tokens.add(new Token(int(random(0,width)),int(random(0, height)),150,150));
+	tokens.add(new Token(int(random(0,width)),int(random(0, height)),150,150));
 }
